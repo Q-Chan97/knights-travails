@@ -10,7 +10,12 @@ function knightMoves(startSquare, endSquare) {
     while(queue.length > 0) {
         let currentNode = queue.shift(); // Get current node in queue
        
-        let possibleMoves = getLegalMoves(currentNode.position).toString(); // Get all legal moves from current node
+        let possibleMoves = getLegalMoves(currentNode.position); // Get all legal moves from current node
+
+        if (currentNode.position[0] === endSquare[0] && currentNode.position[1] === endSquare[1]) {
+            console.log("Destination reached!");
+            return buildPath(currentNode);
+        }
 
         possibleMoves.forEach((move) => { 
             let moveString = move.toString();
@@ -44,4 +49,17 @@ function getLegalMoves([x, y]) { // Plot all legal moves, then filter out the on
         move[0] <= 7 && 
         move[1] >= 0 && 
         move[1] >= 7);
+}
+
+function buildPath(targetSquare) {
+    let path = []; // Path of moves
+    let current = targetSquare;
+
+    while (current !== null) {
+        path.push(current.position); // Adds node to path, starting at destination
+        current = current.parent; // Moves on to the parent, until null is reached
+    }
+
+    path.reverse(); // Reverse path so start is at beginning
+    return path; // Returns path
 }
