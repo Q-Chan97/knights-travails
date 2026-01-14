@@ -28,6 +28,7 @@ function knightMoves(startSquare, endSquare) {
             }
         })
     }
+    return null; // Return null if there's no path
 }
 
 function isOutOfBounds([x, y]) { // Will return true if coordinate numbers are bigger than 7 or smaller than 0
