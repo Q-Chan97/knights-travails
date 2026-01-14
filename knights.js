@@ -48,7 +48,7 @@ function getLegalMoves([x, y]) { // Plot all legal moves, then filter out the on
         move[0] >= 0 && 
         move[0] <= 7 && 
         move[1] >= 0 && 
-        move[1] >= 7);
+        move[1] <= 7);
 }
 
 function buildPath(targetSquare) {
