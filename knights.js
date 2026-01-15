@@ -72,3 +72,7 @@ function printPath(path) {
     const formattedPath = path.map(square => `[${square[0]}, ${square[1]}]`).join(" -> "); // Maps each square to a format, joins with arrows
     console.log(formattedPath);
 }
+
+knightMoves([0,0] , [3,5]);
+knightMoves([6,4] , [7, 1]);
+knightMoves([0,0] , [1,9]); // Should throw error
