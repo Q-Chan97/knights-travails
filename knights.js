@@ -14,7 +14,9 @@ function knightMoves(startSquare, endSquare) {
 
         if (currentNode.position[0] === endSquare[0] && currentNode.position[1] === endSquare[1]) {
             console.log("Destination reached!");
-            return buildPath(currentNode);
+            let path = buildPath(currentNode)
+            printPath(path);
+            return path;
         }
 
         possibleMoves.forEach((move) => { 
@@ -63,4 +65,10 @@ function buildPath(targetSquare) {
 
     path.reverse(); // Reverse path so start is at beginning
     return path; // Returns path
+}
+
+function printPath(path) {
+    console.log(`You made it in ${path.length - 1} moves! Your path is: `); // -1 because this is the number of edges, not nodes
+    const formattedPath = path.map(square => `[${square[0]}, ${square[1]}]`).join(" -> "); // Maps each square to a format, joins with arrows
+    console.log(formattedPath);
 }
